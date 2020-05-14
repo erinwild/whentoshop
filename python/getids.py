@@ -1,15 +1,23 @@
-import config
-import sys
-import googlemaps
 import json
+import sys
+
+import config
+import googlemaps
 
 gmaps = googlemaps.Client(key=config.api_key)
 
-def getIds(location):
+
+def get_ids(location):
     with open('public/locations.json') as f:
         data = json.load(f)
-        currentlocation = data[location]
-        stores = gmaps.places_nearby(keyword=currentlocation['search'], type=currentlocation['type'], location=currentlocation['location'], radius=currentlocation['radius'])
+        current_location = data[location]
+        stores = gmaps.places_nearby(
+            keyword=current_location['search'],
+            type=current_location['type'],
+            location=current_location['location'],
+            radius=current_location['radius']
+        )
         return stores['results']
 
-print(getIds(sys.argv[1]))
+
+print(get_ids(sys.argv[1]))

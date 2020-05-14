@@ -21,9 +21,9 @@ export function Main() {
     : locationParam;
   const currentCity = mappedParam && mappedParam.split("-")[0];
 
-  const [city, updateCity] = useState(currentCity ? currentCity : "ottawa");
+  const [city, updateCity] = useState(currentCity ? currentCity : "chatham");
   const [neighbourhood, updateNeighbourhood] = useState(
-    mappedParam ? mappedParam : "ottawa-centretown"
+    mappedParam ? mappedParam : ""
   );
 
   useEffect(() => {
